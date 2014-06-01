@@ -219,6 +219,21 @@ void printTree(Tree *LBT, Member *Node)
 	return;
 }
 
+
+void fprintTree(FILE *fp, Tree *LBT, Member *Node)
+{
+	if (Node->left != LBT->NIL)
+	{
+		fprintTree(fp,LBT, Node->left);
+	}
+	fprintf(fp, "%d\t%s\t%s\t%s\n", Node->id, Node->name, Node->addr, Node->phone);
+	if (Node->right != LBT->NIL)
+	{
+		fprintTree(fp, LBT, Node->right);
+	}
+	return;
+}
+
 Member *searchValue(Tree *LBT, Member *Node, int id)
 {
 	while (Node != LBT->NIL && Node->id != id)

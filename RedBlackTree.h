@@ -33,6 +33,7 @@ void rotateLeft(Tree *LBT, Member *Node);	/* 트리 좌측 회전 */
 void rotateRight(Tree *LBT, Member *Node);	/* 트리 우측 회전 */
 
 void printTree(Tree *LBT, Member *Node);	/* 트리 노드 출력 */
+void fprintTree(FILE *fp, Tree *LBT, Member *Node);	/* 트리 노드 파일 출력 */
 Member *searchValue(Tree *LBT, Member *Node, int id); /* 노드 검색 */
 
 #endif

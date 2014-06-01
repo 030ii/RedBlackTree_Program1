@@ -10,7 +10,6 @@ int main(void)
 {
 	FILE *fp;
 	Tree *LBT = NULL;
-	Member *curNode = NULL;
 	int input;
 
 	system("color F8");
@@ -24,7 +23,7 @@ int main(void)
 	}
 
 	LBT = createLBT();
-	roadData(fp, LBT, curNode);
+	roadData(fp, LBT);
 	
 	while (1)
 	{
@@ -51,10 +50,15 @@ int main(void)
 		case 2:
 			menu2_member_add(LBT);
 			break;
+		case 3:
+			menu3_data_save(LBT);
+			break;
 		case 0:
+			fclose(fp);
 			return 0;
 		}
 	}
 	
+	fclose(fp);
 	return 0;
 }

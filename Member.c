@@ -27,8 +27,9 @@ void textColor(char txt[],int color)
 }
 
 // 텍스트 문서에서 데이터 로드
-void roadData(FILE *fp, Tree *LBT, Member *curNode)
+void roadData(FILE *fp, Tree *LBT)
 {
+	Member *curNode = NULL;
 	char buff[1024];
 	int i = 0;
 	char *id, *name, *addr, *phone;
@@ -101,6 +102,10 @@ void menu1_member_view(Tree *tree)
 // 메뉴2 : 회원추가
 void menu2_member_add(Tree *tree)
 {
+	system("cls");
+
+	alignCenter("2. 회원 추가\n");
+	printf(WIDTH);
 	int id;
 	char buff[256];
 	char name[10], addr[256], phone[15];
@@ -206,6 +211,42 @@ void menu2_member_add(Tree *tree)
 	// 구조체를 트리에 삽입
 	insertNode(tree, newNode);
 	treeFixUp(tree, newNode);
+
+	return;
+}
+
+void menu3_data_save(Tree *tree)
+{
+	FILE *fp;
+	int input;
+	fp = fopen("data.txt", "w");
+
+	system("cls");
+
+	alignCenter("3. 정보 저장\n");
+	printf(WIDTH);
+	
+	fprintf(fp,"회원 아이디\t회원이름\t회원주소\t핸드폰 번호\n");
+	fprintTree(fp, tree, tree->root);
+
+	fclose(fp);
+
+	printf("\n\n");
+
+	alignCenter("성공적으로 저장되었습니다\n\n");
+	
+	printf(WIDTH);
+	printf("\n");
+	alignCenter("MENU\n");
+	alignCenter("0. 종료\n");
+
+	alignCenter("버튼을 입력하세요 : ");
+	scanf("%d", &input);
+	switch (input)
+	{
+	case 0:
+		return;
+	}
 
 	return;
 }
